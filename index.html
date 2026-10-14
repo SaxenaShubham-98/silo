@@ -1,0 +1,573 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aashi, My Heaven 🌙</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Parisienne&display=swap');
+
+:root {
+  --pink: #ffd6e9;
+  --lavender: #d8c4ff;
+  --white: #fff7fd;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: var(--white);
+  font-family: 'Cormorant Garamond', serif;
+  background: #090719;
+}
+
+#sky {
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  background:
+    radial-gradient(ellipse at 50% 100%, #6c356b 0%, transparent 45%),
+    radial-gradient(ellipse at 10% 20%, #27204e 0%, transparent 50%),
+    linear-gradient(180deg, #080719, #17102e 55%, #3c214d);
+}
+
+#stars, #shooting {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+#stars { z-index: -2; }
+
+.moon {
+  position: absolute;
+  top: 65px;
+  right: 12%;
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  background: #fff5d9;
+  box-shadow:
+    0 0 20px #fff4cf,
+    0 0 65px #e9c5ff80,
+    0 0 120px #cba6ff40;
+  animation: moonGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes moonGlow {
+  to { box-shadow: 0 0 35px #fff4cf, 0 0 100px #e9c5ff90; }
+}
+
+.shooting-star {
+  position: fixed;
+  width: 120px;
+  height: 1px;
+  background: linear-gradient(90deg, #fff, transparent);
+  transform: rotate(-35deg);
+  animation: shoot 5s linear infinite;
+  opacity: 0;
+}
+
+@keyframes shoot {
+  0% { transform: translate(0, 0) rotate(-35deg); opacity: 0; }
+  5% { opacity: 1; }
+  18% { transform: translate(-300px, 180px) rotate(-35deg); opacity: 0; }
+  100% { opacity: 0; }
+}
+
+main {
+  width: 100%;
+  padding: 65px 20px 45px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.eyebrow {
+  color: #e9c9fa;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-size: 11px;
+  text-align: center;
+  animation: fadeUp 1.5s both;
+}
+
+.hero {
+  min-height: 75vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+h1 {
+  margin-top: 20px;
+  font-size: clamp(55px, 13vw, 105px);
+  line-height: 1;
+  font-weight: 400;
+  letter-spacing: -2px;
+  text-shadow: 0 0 35px #f8b9ed35;
+  animation: fadeUp 1.8s both;
+}
+
+.script {
+  display: block;
+  margin-top: 12px;
+  font-family: 'Parisienne', cursive;
+  font-size: clamp(44px, 10vw, 77px);
+  color: #ffd0e8;
+  text-shadow: 0 0 30px #ff9cdb60;
+}
+
+.hero-text {
+  max-width: 350px;
+  margin: 28px auto;
+  font-size: 19px;
+  line-height: 1.9;
+  color: #e8dcef;
+  animation: fadeUp 2.2s both;
+}
+
+.heart-orbit {
+  width: 100px;
+  height: 100px;
+  margin: 15px auto 0;
+  display: grid;
+  place-items: center;
+  border: 1px solid #ffdbf350;
+  border-radius: 50%;
+  box-shadow: 0 0 40px #e3a8ff17, inset 0 0 30px #ffc6ee10;
+  animation: float 4s ease-in-out infinite;
+}
+
+.heart-orbit span {
+  font-size: 35px;
+  filter: drop-shadow(0 0 12px #ff8cc9);
+}
+
+@keyframes float {
+  50% { transform: translateY(-9px); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.divider {
+  width: 90px;
+  height: 1px;
+  margin: 30px auto;
+  background: linear-gradient(90deg, transparent, #f8d3fa, transparent);
+}
+
+.section-title {
+  font-family: 'Parisienne', cursive;
+  font-size: clamp(38px, 8vw, 54px);
+  font-weight: normal;
+  color: #ffe1ef;
+  text-align: center;
+}
+
+.glass {
+  width: min(100%, 480px);
+  margin: 22px auto 60px;
+  padding: 30px 23px;
+  text-align: center;
+  border: 1px solid #ffffff20;
+  border-radius: 180px 180px 25px 25px;
+  background: linear-gradient(145deg, #ffffff0d, #ffffff04);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 20px 80px #00000020, inset 0 0 40px #f9d9ff08;
+}
+
+.photo-frame {
+  width: 100%;
+  min-height: 270px;
+  border: 1px solid #f7d6f180;
+  padding: 10px;
+  border-radius: 150px 150px 18px 18px;
+  background: #ffffff06;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.photo-frame img {
+  display: none;
+  width: 100%;
+  max-height: 390px;
+  object-fit: cover;
+  border-radius: 140px 140px 12px 12px;
+}
+
+.photo-placeholder {
+  padding: 30px 15px;
+  color: #e5cce8;
+  line-height: 2;
+}
+
+.photo-placeholder span {
+  display: block;
+  font-size: 45px;
+  margin-bottom: 10px;
+}
+
+input[type=file] {
+  max-width: 100%;
+  margin-top: 12px;
+  color: #fce5f6;
+  font-size: 12px;
+}
+
+.caption {
+  margin-top: 18px;
+  font-size: 24px;
+  font-style: italic;
+  color: #ffdfef;
+}
+
+.subcaption {
+  margin-top: 8px;
+  color: #d6c1df;
+  font-size: 15px;
+}
+
+button {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  color: #fff5fc;
+  padding: 14px 24px;
+  margin: 10px 4px;
+  border: 1px solid #f6d6f080;
+  border-radius: 40px;
+  background: linear-gradient(120deg, #ffffff12, #dba3eb20);
+  cursor: pointer;
+  transition: .35s;
+}
+
+button:hover {
+  background: #f9d5f830;
+  box-shadow: 0 0 30px #e5b5ff25;
+  transform: translateY(-3px);
+}
+
+#letter {
+  display: none;
+  width: min(100%, 460px);
+  margin: 15px auto 70px;
+  padding: 30px 24px;
+  text-align: left;
+  white-space: pre-line;
+  color: #f7e8f8;
+  background: #ffffff09;
+  border: 1px solid #ffffff20;
+  border-radius: 20px;
+  font-size: 19px;
+  line-height: 1.95;
+  box-shadow: 0 0 50px #e3a8ff12;
+}
+
+#surprise {
+  display: none;
+  max-width: 430px;
+  padding: 25px 10px;
+  margin: 10px auto 50px;
+  text-align: center;
+  font-size: 22px;
+  line-height: 1.9;
+  color: #ffe0f0;
+  animation: fadeUp 1.4s both;
+}
+
+#surprise strong {
+  font-family: 'Parisienne', cursive;
+  font-size: 40px;
+  font-weight: normal;
+}
+
+footer {
+  padding: 30px 10px;
+  text-align: center;
+  color: #cbb3d8;
+  font-size: 12px;
+  letter-spacing: 3px;
+}
+
+.petal {
+  position: fixed;
+  top: -30px;
+  z-index: 4;
+  pointer-events: none;
+  animation: fall linear forwards;
+  filter: drop-shadow(0 0 6px #ff9adf50);
+}
+
+@keyframes fall {
+  to {
+    transform: translate(var(--drift), 110vh) rotate(600deg);
+    opacity: .1;
+  }
+}
+
+#musicNote {
+  color: #e9c9fa;
+  font-size: 12px;
+  margin-top: 8px;
+}
+
+@media (max-width: 500px) {
+  main { padding-top: 35px; }
+  .moon { width: 55px; height: 55px; top: 35px; }
+  .hero { min-height: 78vh; }
+  .glass { padding: 25px 17px; }
+}
+</style>
+</head>
+
+<body>
+<div id="sky"></div>
+<canvas id="stars"></canvas>
+<div class="moon"></div>
+
+<main>
+  <section class="hero">
+    <p class="eyebrow">✧ a little universe, made for you ✧</p>
+
+    <div class="heart-orbit"><span>♡</span></div>
+
+    <h1>
+      You are
+      <span class="script">my Heaven</span>
+    </h1>
+
+    <p class="hero-text">
+      Somewhere between a million stars
+      and a thousand dreams...
+      my heart found its home in you, Aashi. 🌙
+    </p>
+
+    <div class="divider"></div>
+
+    <p class="eyebrow">scroll down, my love ↓</p>
+  </section>
+
+  <h2 class="section-title">Our little universe</h2>
+
+  <section class="glass">
+    <div class="photo-frame">
+      <div class="photo-placeholder" id="placeholder">
+        <span>𓆩♡𓆪</span>
+        Every love story has a favorite picture.<br>
+        Let this be ours.
+        <input type="file" id="photoInput" accept="image/*">
+      </div>
+      <img id="ourPhoto" alt="A special memory of us">
+    </div>
+
+    <p class="caption">You & me, somewhere in forever.</p>
+    <p class="subcaption">My favorite person in this entire universe. ✨</p>
+  </section>
+
+  <h2 class="section-title">Words from my heart</h2>
+
+  <div style="text-align:center;max-width:420px;margin:25px auto 60px">
+    <p class="hero-text" style="margin-top:15px">
+      There are things my heart feels
+      that ordinary words could never explain...
+    </p>
+
+    <button onclick="openLetter()">Open your letter 💌</button>
+    <div id="letter"></div>
+  </div>
+
+  <div class="divider"></div>
+
+  <h2 class="section-title">One last little secret...</h2>
+
+  <div style="text-align:center;margin:15px auto 60px">
+    <p class="hero-text">
+      I made something special appear
+      just for you. Ready, Aashi?
+    </p>
+    <button onclick="reveal()">Tap for your surprise ✨</button>
+    <div id="surprise">
+      <div style="font-size:42px;margin-bottom:20px">💗</div>
+      If I had a thousand lives,<br>
+      and a thousand worlds to choose from,<br>
+      <strong>I'd still look for you.</strong>
+      <br><br>
+      In every sky, every lifetime,<br>
+      every version of forever...<br>
+      I hope it's you, Aashi. ❤️
+      <br><br>
+      <span style="font-size:16px">♡ YOU WILL ALWAYS BE MY HEAVEN ♡</span>
+    </div>
+  </div>
+
+  <footer>
+    MADE WITH LOVE, UNDER A MILLION STARS
+    <p style="margin-top:14px;font-family:'Parisienne';font-size:28px;letter-spacing:0">
+      Forever yours, Aashi. ♡
+    </p>
+  </footer>
+</main>
+
+<script>
+const canvas = document.getElementById("stars");
+const ctx = canvas.getContext("2d");
+let stars = [];
+
+function resize() {
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  canvas.width = innerWidth * dpr;
+  canvas.height = innerHeight * dpr;
+  canvas.style.width = innerWidth + "px";
+  canvas.style.height = innerHeight + "px";
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+  stars = Array.from({length: Math.min(180, Math.floor(innerWidth / 3))}, () => ({
+    x: Math.random() * innerWidth,
+    y: Math.random() * innerHeight,
+    r: Math.random() * 1.5 + .3,
+    phase: Math.random() * Math.PI * 2
+  }));
+}
+
+function drawStars(time) {
+  ctx.clearRect(0, 0, innerWidth, innerHeight);
+
+  stars.forEach(s => {
+    const alpha = .3 + .7 * (Math.sin(time * .001 + s.phase) + 1) / 2;
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(255,240,255,${alpha})`;
+    ctx.fill();
+  });
+
+  requestAnimationFrame(drawStars);
+}
+
+resize();
+window.addEventListener("resize", resize);
+requestAnimationFrame(drawStars);
+
+for (let i = 0; i < 3; i++) {
+  const star = document.createElement("div");
+  star.className = "shooting-star";
+  star.style.top = (10 + Math.random() * 40) + "%";
+  star.style.left = (60 + Math.random() * 40) + "%";
+  star.style.animationDelay = (i * 3 + Math.random() * 3) + "s";
+  document.body.appendChild(star);
+}
+
+const loveLetter = `My dearest Aashi, ♡
+
+If the stars could tell stories, every one of them would tell mine — the story of how someone as beautiful as you found a place in my heart.
+
+You make the simplest moments feel like magic. You make my world softer, brighter, and warmer just by being in it.
+
+I wish you could borrow my eyes for a moment and see yourself the way I see you. Maybe then you'd understand why your smile means so much, why your happiness matters to me, and why I feel so lucky to know you.
+
+I cannot promise that every day will be perfect. But I hope I can keep giving you reasons to smile, someone to talk to, and a heart that always wishes the best for you.
+
+When you look at the night sky, remember this: somewhere beneath those same stars is someone who is very grateful that you exist.
+
+And if I could make one wish tonight, it would simply be for you to feel as loved as you make me feel.
+
+You are not just a beautiful part of my story, Aashi.
+You are the person who makes the story beautiful.
+
+Always remember that. ♡
+
+With all my love,
+Your person 🌙`;
+
+let typing = false;
+let typingTimer;
+
+function openLetter() {
+  const box = document.getElementById("letter");
+  box.style.display = "block";
+
+  if (typing) {
+    clearTimeout(typingTimer);
+    box.textContent = loveLetter;
+    typing = false;
+    return;
+  }
+
+  box.textContent = "";
+  typing = true;
+  let i = 0;
+
+  function type() {
+    if (!typing) return;
+
+    if (i < loveLetter.length) {
+      box.textContent += loveLetter[i++];
+      typingTimer = setTimeout(type, 28);
+    } else {
+      typing = false;
+    }
+  }
+
+  type();
+  box.scrollIntoView({behavior:"smooth", block:"center"});
+}
+
+function reveal() {
+  const box = document.getElementById("surprise");
+  box.style.display = "block";
+  box.scrollIntoView({behavior:"smooth", block:"center"});
+
+  for (let i = 0; i < 35; i++) {
+    setTimeout(makePetal, i * 100);
+  }
+}
+
+function makePetal() {
+  const petal = document.createElement("div");
+  petal.className = "petal";
+  petal.textContent = ["🌸", "♡", "💗", "✨", "🌷"][
+    Math.floor(Math.random() * 5)
+  ];
+  petal.style.left = Math.random() * 100 + "vw";
+  petal.style.fontSize = (12 + Math.random() * 17) + "px";
+  petal.style.animationDuration = (5 + Math.random() * 6) + "s";
+  petal.style.setProperty("--drift", (Math.random() * 180 - 90) + "px");
+  document.body.appendChild(petal);
+  setTimeout(() => petal.remove(), 12000);
+}
+
+setInterval(() => {
+  if (Math.random() > .45) makePetal();
+}, 1200);
+
+document.getElementById("photoInput").addEventListener("change", function() {
+  const file = this.files[0];
+  if (!file) return;
+
+  const img = document.getElementById("ourPhoto");
+  img.src = URL.createObjectURL(file);
+  img.style.display = "block";
+  document.getElementById("placeholder").style.display = "none";
+});
+</script>
+</body>
+</html>
